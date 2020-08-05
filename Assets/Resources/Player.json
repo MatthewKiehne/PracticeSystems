@@ -1,0 +1,15 @@
+{
+    "Values": {
+        "Name": "Player"
+    },
+    "DataPackets": {
+        "Inventory": {
+            "Values": {
+                "MaxWeight": "100",
+                "MaxVolume": "50"
+            },
+            "DataPackets": {
+            }
+        }
+    }
+}

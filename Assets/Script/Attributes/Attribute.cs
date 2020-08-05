@@ -6,11 +6,11 @@ using System;
 public abstract class Attribute {
 
     protected Entity entity;
-    private bool duplicate;
+    private bool newInstance;
 
-    public Attribute(Entity entity, DataPacket data, bool duplicate) {
+    public Attribute(Entity entity, DataPacket data, bool newInstance) {
         this.entity = entity;
-        this.duplicate = duplicate;
+        this.newInstance = newInstance;
     }
 
     public DataPacket GetDataPacket() {
@@ -37,9 +37,9 @@ public abstract class Attribute {
         }
     }
 
-    public bool Duplicate {
+    public bool NewInstance {
         get {
-            return this.duplicate;
+            return this.newInstance;
         }
     }
 }

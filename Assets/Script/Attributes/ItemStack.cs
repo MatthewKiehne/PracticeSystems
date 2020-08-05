@@ -4,22 +4,32 @@ using UnityEngine;
 
 public class ItemStack : Attribute {
 
-    private int maxStack;
-    private int currentAmount;
-
+    public int Amount;
     private Item item = null;
+
+    public ItemStack(Entity entity, Item item, int quantity) : base(entity,null,true){
+        this.Amount = quantity;
+        this.item = item;
+    }
+
+    public ItemStack(Entity entity, Item item) : base(entity, null, true) {
+        this.Amount = 1;
+        this.item = item;
+    }
 
     public ItemStack(Entity entity, DataPacket data) : base(entity, data, true) {
 
-        this.maxStack = int.Parse(data.Values["MaxStack"]);
-        this.currentAmount = int.Parse(data.Values["CurrentAmount"]);
+        List<string> keys = new List<string>(data.Values.Keys);
+
+        this.Amount = int.Parse((string)data.Values["Amount"]);
+        this.item = EntityFactory.Instanciate(data.DataPackets["Item"]).getAttribute<Item>();
     }
 
     protected override DataPacket saveVariables() {
 
         DataPacket data = new DataPacket();
-        data.Values.Add("MaxStack", this.maxStack + "");
-        data.Values.Add("CurrentAmount", this.currentAmount + "");
+        data.Values.Add("Amount", this.Amount + "");
+        data.DataPackets.Add("Item", item.Entity.GetDataPacket());
 
         return data;
     }
@@ -33,16 +43,14 @@ public class ItemStack : Attribute {
     }
 
     public float getWeight() {
-        return this.item.Weight * this.currentAmount;
+        return this.item.Weight * this.Amount;
     }
 
     public float getVolume() {
-        return this.item.Volume * this.currentAmount;
+        return this.item.Volume * this.Amount;
     }
 
     public Item getItem() {
         return this.item;
-    }
-
-    
+    } 
 }

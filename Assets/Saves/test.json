@@ -1,0 +1,1 @@
+{"Values":{"Name":"Player"},"DataPackets":{"Inventory":{"Values":{"MaxWeight":"100","MaxVolume":"50"},"DataPackets":{"Apple Stack":{"Values":{"Name":"Apple Stack"},"DataPackets":{"ItemStack":{"Values":{"Amount":"5"},"DataPackets":{"Item":{"Values":{"Name":"Apple"},"DataPackets":{"Item":{"Values":{"Weight":"0.01","Volume":"0.01"},"DataPackets":{}}}}}}}}}}}}

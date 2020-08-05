@@ -8,11 +8,16 @@ public class Item : Attribute {
     private float weight;
     private float volume;
 
-    public Item(Entity entity, DataPacket data) : base(entity, data, false) {
+    public Item(Entity entity, float weight, float volume) : base(entity, null, false) {
+        this.weight = weight;
+        this.volume = volume;
+    }
+
+    public Item(Entity entity, DataPacket data) : base(entity, data,false) {
 
         //Debug.Log(data.Values["Weight"].GetType());
-        this.weight = float.Parse(data.Values["Weight"]);
-        this.volume = float.Parse(data.Values["Volume"]);
+        this.weight = float.Parse((string)data.Values["Weight"]);
+        this.volume = float.Parse((string)data.Values["Volume"]);
     }
 
 

@@ -8,26 +8,13 @@ public class GroundManager : MonoBehaviour {
     [SerializeField]
     Tilemap groundMap;
 
-    [SerializeField]
-    Tile groundTile;
+    public void makeMap(int width, int height, string pathToTile) {
 
-    [SerializeField]
-    private int width = 128;
+        Tile tile = Resources.Load<Tile>(pathToTile);
 
-    [SerializeField]
-    private int height = 128;
-
-    private Ground[,] ground;
-
-    private void Start() {
-
-        this.ground = new Ground[this.width,this.height];
-
-        for(int x = 0; x < this.width; x++) {
-            for(int y = 0; y < this.height; y++) {
-
-                this.ground[x, y] = new Ground();
-                groundMap.SetTile(new Vector3Int(x, y, 0), groundTile);
+        for(int x = 0; x < width; x++) {
+            for(int y = 0; y < height; y++) {
+                groundMap.SetTile(new Vector3Int(x, y, 0), tile);
             }
         }
     }

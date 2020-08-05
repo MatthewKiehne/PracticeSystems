@@ -1,16 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 using System;
 
 [Serializable]
 public class DataPacket {
 
-    public Dictionary<string, string> Values;
+    public Dictionary<string, object> Values;
     public Dictionary<string, DataPacket> DataPackets;
 
     public DataPacket() {
-        this.Values = new Dictionary<string, string>();
+        this.Values = new Dictionary<string, object>();
         this.DataPackets = new Dictionary<string, DataPacket>();
     }
 }
